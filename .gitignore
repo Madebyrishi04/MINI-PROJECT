@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules/
+frontend/node_modules/
+
+# Archives and large files
+*.zip
+*.tar.gz
+*.rar
+
+# Environment files
+.env
+.env.local
+
+# Python artifacts (if backend added later)
+__pycache__/
+*.pyc
+venv/
+env/
+.venv/
