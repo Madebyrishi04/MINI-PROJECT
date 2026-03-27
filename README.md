@@ -7,4 +7,7 @@ required node.js (https://nodejs.org/en/download/current)
 
 
 cd frontend
+<br>
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+<br>
 npm install
