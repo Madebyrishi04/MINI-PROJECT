@@ -27,4 +27,12 @@ educational pages
 static informational content
 
 👉 So it misclassifies non-news content as FAKE
+ERY IMPORTANT (FOR VIVA)
 
+If examiner asks:
+
+“Does your model verify truth?”
+
+👉 Say:
+
+“No, it classifies based on linguistic patterns learned from training data, not factual verification.”
