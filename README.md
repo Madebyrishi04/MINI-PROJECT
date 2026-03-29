@@ -36,3 +36,10 @@ If examiner asks:
 👉 Say:
 
 “No, it classifies based on linguistic patterns learned from training data, not factual verification.”
+
+
+That dataset has:
+
+Heavy US political news
+Many fake/conspiracy style samples
+Very specific writing patterns
