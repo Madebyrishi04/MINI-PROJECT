@@ -1,0 +1,658 @@
+stack: Error: Command failed: npx tailwindcss -i ./src/index.css -o ./dist/output.css
+
+Rebuilding...
+CssSyntaxError: tailwindcss: C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\src\index.css:17:5: The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.
+    at Input.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\input.js:135:16)
+    at AtRule.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\node.js:146:32)
+    at processApply (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:380:29)
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:551:9
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\processTailwindFeatures.js:55:50
+    at async Object.Once (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\plugin.js:248:17)
+    at async LazyResult.runAsync (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\lazy-result.js:293:11)
+    at async build (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\index.js:49:9) {
+  reason: 'The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.',
+  file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css',
+  source: '@tailwind base;\r\n' +
+    '@tailwind components;\r\n' +
+    '@tailwind utilities;\r\n' +
+    '\r\n' +
+    '@layer base {\r\n' +
+    '  body {\r\n' +
+    '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  ::selection {\r\n' +
+    '    @apply bg-primary/30 text-white;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@layer utilities {\r\n' +
+    '  .glass-panel {\r\n' +
+    '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  .text-glow {\r\n' +
+    '    text-shadow: 0 0 15px currentColor;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '/* Subtle Animated Background Grid */\r\n' +
+    '.bg-grid {\r\n' +
+    '  background-size: 50px 50px;\r\n' +
+    '  background-image:\r\n' +
+    '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+    '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+    '  animation: bgScroll 30s linear infinite;\r\n' +
+    '  position: fixed;\r\n' +
+    '  top: 0;\r\n' +
+    '  left: 0;\r\n' +
+    '  right: 0;\r\n' +
+    '  bottom: 0;\r\n' +
+    '  z-index: -1;\r\n' +
+    '  pointer-events: none;\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@keyframes bgScroll {\r\n' +
+    '  from {\r\n' +
+    '    background-position: 0 0;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  to {\r\n' +
+    '    background-position: 50px 50px;\r\n' +
+    '  }\r\n' +
+    '}',
+  line: 17,
+  column: 5,
+  endLine: 17,
+  endColumn: 104,
+  input: {
+    column: 5,
+    endColumn: 104,
+    endLine: 17,
+    endOffset: 384,
+    line: 17,
+    offset: 285,
+    source: '@tailwind base;\r\n' +
+      '@tailwind components;\r\n' +
+      '@tailwind utilities;\r\n' +
+      '\r\n' +
+      '@layer base {\r\n' +
+      '  body {\r\n' +
+      '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  ::selection {\r\n' +
+      '    @apply bg-primary/30 text-white;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@layer utilities {\r\n' +
+      '  .glass-panel {\r\n' +
+      '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  .text-glow {\r\n' +
+      '    text-shadow: 0 0 15px currentColor;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '/* Subtle Animated Background Grid */\r\n' +
+      '.bg-grid {\r\n' +
+      '  background-size: 50px 50px;\r\n' +
+      '  background-image:\r\n' +
+      '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+      '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+      '  animation: bgScroll 30s linear infinite;\r\n' +
+      '  position: fixed;\r\n' +
+      '  top: 0;\r\n' +
+      '  left: 0;\r\n' +
+      '  right: 0;\r\n' +
+      '  bottom: 0;\r\n' +
+      '  z-index: -1;\r\n' +
+      '  pointer-events: none;\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@keyframes bgScroll {\r\n' +
+      '  from {\r\n' +
+      '    background-position: 0 0;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  to {\r\n' +
+      '    background-position: 50px 50px;\r\n' +
+      '  }\r\n' +
+      '}',
+    url: 'file:///C:/Users/KIIT0001/OneDrive/Desktop/MINI%20PROJECT%20(FINAL)/frontend/src/index.css',
+    file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css'
+  },
+  plugin: 'tailwindcss'
+}
+
+    at genericNodeError (node:internal/errors:984:15)
+    at wrappedFn (node:internal/errors:538:14)
+    at checkExecSyncError (node:child_process:891:11)
+    at Object.execSync (node:child_process:963:15)
+    at [eval]:1:73
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:118:14
+    at [eval]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at evalScript (node:internal/process/execution:133:3)
+message: Command failed: npx tailwindcss -i ./src/index.css -o ./dist/output.css
+
+Rebuilding...
+CssSyntaxError: tailwindcss: C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\src\index.css:17:5: The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.
+    at Input.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\input.js:135:16)
+    at AtRule.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\node.js:146:32)
+    at processApply (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:380:29)
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:551:9
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\processTailwindFeatures.js:55:50
+    at async Object.Once (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\plugin.js:248:17)
+    at async LazyResult.runAsync (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\lazy-result.js:293:11)
+    at async build (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\index.js:49:9) {
+  reason: 'The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.',
+  file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css',
+  source: '@tailwind base;\r\n' +
+    '@tailwind components;\r\n' +
+    '@tailwind utilities;\r\n' +
+    '\r\n' +
+    '@layer base {\r\n' +
+    '  body {\r\n' +
+    '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  ::selection {\r\n' +
+    '    @apply bg-primary/30 text-white;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@layer utilities {\r\n' +
+    '  .glass-panel {\r\n' +
+    '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  .text-glow {\r\n' +
+    '    text-shadow: 0 0 15px currentColor;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '/* Subtle Animated Background Grid */\r\n' +
+    '.bg-grid {\r\n' +
+    '  background-size: 50px 50px;\r\n' +
+    '  background-image:\r\n' +
+    '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+    '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+    '  animation: bgScroll 30s linear infinite;\r\n' +
+    '  position: fixed;\r\n' +
+    '  top: 0;\r\n' +
+    '  left: 0;\r\n' +
+    '  right: 0;\r\n' +
+    '  bottom: 0;\r\n' +
+    '  z-index: -1;\r\n' +
+    '  pointer-events: none;\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@keyframes bgScroll {\r\n' +
+    '  from {\r\n' +
+    '    background-position: 0 0;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  to {\r\n' +
+    '    background-position: 50px 50px;\r\n' +
+    '  }\r\n' +
+    '}',
+  line: 17,
+  column: 5,
+  endLine: 17,
+  endColumn: 104,
+  input: {
+    column: 5,
+    endColumn: 104,
+    endLine: 17,
+    endOffset: 384,
+    line: 17,
+    offset: 285,
+    source: '@tailwind base;\r\n' +
+      '@tailwind components;\r\n' +
+      '@tailwind utilities;\r\n' +
+      '\r\n' +
+      '@layer base {\r\n' +
+      '  body {\r\n' +
+      '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  ::selection {\r\n' +
+      '    @apply bg-primary/30 text-white;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@layer utilities {\r\n' +
+      '  .glass-panel {\r\n' +
+      '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  .text-glow {\r\n' +
+      '    text-shadow: 0 0 15px currentColor;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '/* Subtle Animated Background Grid */\r\n' +
+      '.bg-grid {\r\n' +
+      '  background-size: 50px 50px;\r\n' +
+      '  background-image:\r\n' +
+      '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+      '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+      '  animation: bgScroll 30s linear infinite;\r\n' +
+      '  position: fixed;\r\n' +
+      '  top: 0;\r\n' +
+      '  left: 0;\r\n' +
+      '  right: 0;\r\n' +
+      '  bottom: 0;\r\n' +
+      '  z-index: -1;\r\n' +
+      '  pointer-events: none;\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@keyframes bgScroll {\r\n' +
+      '  from {\r\n' +
+      '    background-position: 0 0;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  to {\r\n' +
+      '    background-position: 50px 50px;\r\n' +
+      '  }\r\n' +
+      '}',
+    url: 'file:///C:/Users/KIIT0001/OneDrive/Desktop/MINI%20PROJECT%20(FINAL)/frontend/src/index.css',
+    file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css'
+  },
+  plugin: 'tailwindcss'
+}
+
+status: 1
+signal: null
+output: ,,
+Rebuilding...
+CssSyntaxError: tailwindcss: C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\src\index.css:17:5: The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.
+    at Input.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\input.js:135:16)
+    at AtRule.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\node.js:146:32)
+    at processApply (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:380:29)
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:551:9
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\processTailwindFeatures.js:55:50
+    at async Object.Once (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\plugin.js:248:17)
+    at async LazyResult.runAsync (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\lazy-result.js:293:11)
+    at async build (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\index.js:49:9) {
+  reason: 'The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.',
+  file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css',
+  source: '@tailwind base;\r\n' +
+    '@tailwind components;\r\n' +
+    '@tailwind utilities;\r\n' +
+    '\r\n' +
+    '@layer base {\r\n' +
+    '  body {\r\n' +
+    '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  ::selection {\r\n' +
+    '    @apply bg-primary/30 text-white;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@layer utilities {\r\n' +
+    '  .glass-panel {\r\n' +
+    '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  .text-glow {\r\n' +
+    '    text-shadow: 0 0 15px currentColor;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '/* Subtle Animated Background Grid */\r\n' +
+    '.bg-grid {\r\n' +
+    '  background-size: 50px 50px;\r\n' +
+    '  background-image:\r\n' +
+    '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+    '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+    '  animation: bgScroll 30s linear infinite;\r\n' +
+    '  position: fixed;\r\n' +
+    '  top: 0;\r\n' +
+    '  left: 0;\r\n' +
+    '  right: 0;\r\n' +
+    '  bottom: 0;\r\n' +
+    '  z-index: -1;\r\n' +
+    '  pointer-events: none;\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@keyframes bgScroll {\r\n' +
+    '  from {\r\n' +
+    '    background-position: 0 0;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  to {\r\n' +
+    '    background-position: 50px 50px;\r\n' +
+    '  }\r\n' +
+    '}',
+  line: 17,
+  column: 5,
+  endLine: 17,
+  endColumn: 104,
+  input: {
+    column: 5,
+    endColumn: 104,
+    endLine: 17,
+    endOffset: 384,
+    line: 17,
+    offset: 285,
+    source: '@tailwind base;\r\n' +
+      '@tailwind components;\r\n' +
+      '@tailwind utilities;\r\n' +
+      '\r\n' +
+      '@layer base {\r\n' +
+      '  body {\r\n' +
+      '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  ::selection {\r\n' +
+      '    @apply bg-primary/30 text-white;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@layer utilities {\r\n' +
+      '  .glass-panel {\r\n' +
+      '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  .text-glow {\r\n' +
+      '    text-shadow: 0 0 15px currentColor;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '/* Subtle Animated Background Grid */\r\n' +
+      '.bg-grid {\r\n' +
+      '  background-size: 50px 50px;\r\n' +
+      '  background-image:\r\n' +
+      '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+      '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+      '  animation: bgScroll 30s linear infinite;\r\n' +
+      '  position: fixed;\r\n' +
+      '  top: 0;\r\n' +
+      '  left: 0;\r\n' +
+      '  right: 0;\r\n' +
+      '  bottom: 0;\r\n' +
+      '  z-index: -1;\r\n' +
+      '  pointer-events: none;\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@keyframes bgScroll {\r\n' +
+      '  from {\r\n' +
+      '    background-position: 0 0;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  to {\r\n' +
+      '    background-position: 50px 50px;\r\n' +
+      '  }\r\n' +
+      '}',
+    url: 'file:///C:/Users/KIIT0001/OneDrive/Desktop/MINI%20PROJECT%20(FINAL)/frontend/src/index.css',
+    file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css'
+  },
+  plugin: 'tailwindcss'
+}
+
+pid: 13020
+stdout: 
+stderr: 
+Rebuilding...
+CssSyntaxError: tailwindcss: C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\src\index.css:17:5: The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.
+    at Input.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\input.js:135:16)
+    at AtRule.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\node.js:146:32)
+    at processApply (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:380:29)
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:551:9
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\processTailwindFeatures.js:55:50
+    at async Object.Once (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\plugin.js:248:17)
+    at async LazyResult.runAsync (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\lazy-result.js:293:11)
+    at async build (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\index.js:49:9) {
+  reason: 'The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.',
+  file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css',
+  source: '@tailwind base;\r\n' +
+    '@tailwind components;\r\n' +
+    '@tailwind utilities;\r\n' +
+    '\r\n' +
+    '@layer base {\r\n' +
+    '  body {\r\n' +
+    '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  ::selection {\r\n' +
+    '    @apply bg-primary/30 text-white;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@layer utilities {\r\n' +
+    '  .glass-panel {\r\n' +
+    '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  .text-glow {\r\n' +
+    '    text-shadow: 0 0 15px currentColor;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '/* Subtle Animated Background Grid */\r\n' +
+    '.bg-grid {\r\n' +
+    '  background-size: 50px 50px;\r\n' +
+    '  background-image:\r\n' +
+    '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+    '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+    '  animation: bgScroll 30s linear infinite;\r\n' +
+    '  position: fixed;\r\n' +
+    '  top: 0;\r\n' +
+    '  left: 0;\r\n' +
+    '  right: 0;\r\n' +
+    '  bottom: 0;\r\n' +
+    '  z-index: -1;\r\n' +
+    '  pointer-events: none;\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@keyframes bgScroll {\r\n' +
+    '  from {\r\n' +
+    '    background-position: 0 0;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  to {\r\n' +
+    '    background-position: 50px 50px;\r\n' +
+    '  }\r\n' +
+    '}',
+  line: 17,
+  column: 5,
+  endLine: 17,
+  endColumn: 104,
+  input: {
+    column: 5,
+    endColumn: 104,
+    endLine: 17,
+    endOffset: 384,
+    line: 17,
+    offset: 285,
+    source: '@tailwind base;\r\n' +
+      '@tailwind components;\r\n' +
+      '@tailwind utilities;\r\n' +
+      '\r\n' +
+      '@layer base {\r\n' +
+      '  body {\r\n' +
+      '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  ::selection {\r\n' +
+      '    @apply bg-primary/30 text-white;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@layer utilities {\r\n' +
+      '  .glass-panel {\r\n' +
+      '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  .text-glow {\r\n' +
+      '    text-shadow: 0 0 15px currentColor;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '/* Subtle Animated Background Grid */\r\n' +
+      '.bg-grid {\r\n' +
+      '  background-size: 50px 50px;\r\n' +
+      '  background-image:\r\n' +
+      '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+      '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+      '  animation: bgScroll 30s linear infinite;\r\n' +
+      '  position: fixed;\r\n' +
+      '  top: 0;\r\n' +
+      '  left: 0;\r\n' +
+      '  right: 0;\r\n' +
+      '  bottom: 0;\r\n' +
+      '  z-index: -1;\r\n' +
+      '  pointer-events: none;\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@keyframes bgScroll {\r\n' +
+      '  from {\r\n' +
+      '    background-position: 0 0;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  to {\r\n' +
+      '    background-position: 50px 50px;\r\n' +
+      '  }\r\n' +
+      '}',
+    url: 'file:///C:/Users/KIIT0001/OneDrive/Desktop/MINI%20PROJECT%20(FINAL)/frontend/src/index.css',
+    file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css'
+  },
+  plugin: 'tailwindcss'
+}
+
+
+
+Rebuilding...
+CssSyntaxError: tailwindcss: C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\src\index.css:17:5: The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.
+    at Input.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\input.js:135:16)
+    at AtRule.error (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\node.js:146:32)
+    at processApply (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:380:29)
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\lib\expandApplyAtRules.js:551:9
+    at C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\processTailwindFeatures.js:55:50
+    at async Object.Once (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\plugin.js:248:17)
+    at async LazyResult.runAsync (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\postcss\lib\lazy-result.js:293:11)
+    at async build (C:\Users\KIIT0001\OneDrive\Desktop\MINI PROJECT (FINAL)\frontend\node_modules\tailwindcss\lib\cli\build\index.js:49:9) {
+  reason: 'The `shadow-[0_8px_32px_rgba(0,` class does not exist. If `shadow-[0_8px_32px_rgba(0,` is a custom class, make sure it is defined within a `@layer` directive.',
+  file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css',
+  source: '@tailwind base;\r\n' +
+    '@tailwind components;\r\n' +
+    '@tailwind utilities;\r\n' +
+    '\r\n' +
+    '@layer base {\r\n' +
+    '  body {\r\n' +
+    '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  ::selection {\r\n' +
+    '    @apply bg-primary/30 text-white;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@layer utilities {\r\n' +
+    '  .glass-panel {\r\n' +
+    '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  .text-glow {\r\n' +
+    '    text-shadow: 0 0 15px currentColor;\r\n' +
+    '  }\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '/* Subtle Animated Background Grid */\r\n' +
+    '.bg-grid {\r\n' +
+    '  background-size: 50px 50px;\r\n' +
+    '  background-image:\r\n' +
+    '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+    '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+    '  animation: bgScroll 30s linear infinite;\r\n' +
+    '  position: fixed;\r\n' +
+    '  top: 0;\r\n' +
+    '  left: 0;\r\n' +
+    '  right: 0;\r\n' +
+    '  bottom: 0;\r\n' +
+    '  z-index: -1;\r\n' +
+    '  pointer-events: none;\r\n' +
+    '}\r\n' +
+    '\r\n' +
+    '@keyframes bgScroll {\r\n' +
+    '  from {\r\n' +
+    '    background-position: 0 0;\r\n' +
+    '  }\r\n' +
+    '\r\n' +
+    '  to {\r\n' +
+    '    background-position: 50px 50px;\r\n' +
+    '  }\r\n' +
+    '}',
+  line: 17,
+  column: 5,
+  endLine: 17,
+  endColumn: 104,
+  input: {
+    column: 5,
+    endColumn: 104,
+    endLine: 17,
+    endOffset: 384,
+    line: 17,
+    offset: 285,
+    source: '@tailwind base;\r\n' +
+      '@tailwind components;\r\n' +
+      '@tailwind utilities;\r\n' +
+      '\r\n' +
+      '@layer base {\r\n' +
+      '  body {\r\n' +
+      '    @apply bg-background text-textMain min-h-screen font-sans overflow-x-hidden;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  ::selection {\r\n' +
+      '    @apply bg-primary/30 text-white;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@layer utilities {\r\n' +
+      '  .glass-panel {\r\n' +
+      '    @apply bg-surface/60 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_rgba(0, 0, 0, 0.5)];\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  .text-glow {\r\n' +
+      '    text-shadow: 0 0 15px currentColor;\r\n' +
+      '  }\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '/* Subtle Animated Background Grid */\r\n' +
+      '.bg-grid {\r\n' +
+      '  background-size: 50px 50px;\r\n' +
+      '  background-image:\r\n' +
+      '    linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),\r\n' +
+      '    linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);\r\n' +
+      '  animation: bgScroll 30s linear infinite;\r\n' +
+      '  position: fixed;\r\n' +
+      '  top: 0;\r\n' +
+      '  left: 0;\r\n' +
+      '  right: 0;\r\n' +
+      '  bottom: 0;\r\n' +
+      '  z-index: -1;\r\n' +
+      '  pointer-events: none;\r\n' +
+      '}\r\n' +
+      '\r\n' +
+      '@keyframes bgScroll {\r\n' +
+      '  from {\r\n' +
+      '    background-position: 0 0;\r\n' +
+      '  }\r\n' +
+      '\r\n' +
+      '  to {\r\n' +
+      '    background-position: 50px 50px;\r\n' +
+      '  }\r\n' +
+      '}',
+    url: 'file:///C:/Users/KIIT0001/OneDrive/Desktop/MINI%20PROJECT%20(FINAL)/frontend/src/index.css',
+    file: 'C:\\Users\\KIIT0001\\OneDrive\\Desktop\\MINI PROJECT (FINAL)\\frontend\\src\\index.css'
+  },
+  plugin: 'tailwindcss'
+}
+
+
