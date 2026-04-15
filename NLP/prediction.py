@@ -15,13 +15,15 @@ warnings.filterwarnings("ignore")
 CHECKPOINT_DIR = Path(".")
 MODEL_NAME     = "distilbert-base-uncased"
 MAX_LEN        = 256
-CONFIDENCE_THRESHOLD = 0.70
+CONFIDENCE_THRESHOLD = 0.80
 
 LABEL_MAP = {0: "REAL", 1: "FAKE"}
 COLOR_MAP  = {"FAKE": "#e74c3c", "REAL": "#2ecc71", "UNCERTAIN": "#f39c12"}
 
 
 class FakeNewsPredictor:
+
+
 
     def __init__(
         self,
@@ -49,7 +51,7 @@ class FakeNewsPredictor:
         self.model = DistilBertFakeNewsClassifier(model_name=model_name).to(self.device)
 
         if checkpoint_path is None:
-            checkpoint_path = str(Path(__file__).parent / "best_model.pt")
+            checkpoint_path = str(Path(__file__).parent / "checkpoints" / "best_model.pt")
 
         self.model.load_state_dict(torch.load(checkpoint_path, map_location=self.device))
         self.model.eval()
@@ -62,6 +64,63 @@ class FakeNewsPredictor:
             truncation=True,
             return_tensors="pt",
         )
+    
+        # -------------------------
+    # 🔥 SPLIT LONG TEXT
+    # -------------------------
+    def split_text(self, text, chunk_size=300):
+        words = text.split()
+        chunks = []
+
+        for i in range(0, len(words), chunk_size):
+            chunk = " ".join(words[i:i+chunk_size])
+            if len(chunk) > 20:
+                chunks.append(chunk)
+
+        return chunks
+
+
+    # -------------------------
+    # 🔥 MULTI-CHUNK PREDICTION
+    # -------------------------
+    def predict_long_text(self, text: str):
+        chunks = self.split_text(text)
+
+        if not chunks:
+            return self.predict(text)
+
+        fake_probs = []
+        real_probs = []
+
+        # 🔥 limit chunks (speed + avoid noise)
+        for chunk in chunks[:5]:
+            result = self.predict(chunk)
+            fake_probs.append(result["fake_prob"])
+            real_probs.append(result["real_prob"])
+
+        avg_fake = sum(fake_probs) / len(fake_probs)
+        avg_real = sum(real_probs) / len(real_probs)
+        
+        # reduce fake overconfidence
+        avg_fake = avg_fake * 0.95
+        confidence = max(avg_fake, avg_real)
+        # 🔥 bias correction
+        if avg_fake - avg_real > 0.15:
+            label = "FAKE"
+        elif avg_real - avg_fake > 0.15:
+            label = "REAL"
+        else:
+            label = "UNCERTAIN"
+
+        verdict = label if confidence >= self.threshold else "UNCERTAIN"
+
+        return {
+            "label": label,
+            "verdict": verdict,
+            "confidence": round(confidence, 4),
+            "fake_prob": round(avg_fake, 4),
+            "real_prob": round(avg_real, 4),
+        }
 
     @torch.no_grad()
     def predict(self, text: str):

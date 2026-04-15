@@ -78,8 +78,8 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # IMPORTING LOCAL FILES
-   # from model_arch import DistilBertFakeNewsClassifier
-    #from preprocessing import FakeNewsDataset, MAX_LEN, BATCH_SIZE
+    from model_arch import DistilBertFakeNewsClassifier
+    from preprocessing import FakeNewsDataset, MAX_LEN, BATCH_SIZE
 
     tokenizer = DistilBertTokenizerFast.from_pretrained(MODEL_NAME)
 
@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     # LOADING MODEL
     model = DistilBertFakeNewsClassifier().to(device)
-    model.load_state_dict(torch.load("checkpoints/best_model.pt", map_location=device))
+    model.load_state_dict(torch.load("best_model.pt", map_location=device))
 
     # PREDICTIONS
     labels, preds, probs = get_predictions(model, test_loader, device)

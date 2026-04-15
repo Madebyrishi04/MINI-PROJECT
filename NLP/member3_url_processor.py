@@ -12,6 +12,10 @@ model_arch_path = os.path.join(
     "model_arch.py"
 )
 
+TRUSTED_SOURCES = ["bbc", "reuters", "thehindu", "ndtv", "cnn", "aljazeera"]
+
+BIAS_WORDS = ["said", "reported", "according to", "confirmed", "official", "statement"]
+
 spec_arch = importlib.util.spec_from_file_location("model_arch", model_arch_path)
 model_arch_module = importlib.util.module_from_spec(spec_arch)
 spec_arch.loader.exec_module(model_arch_module)
@@ -19,6 +23,11 @@ spec_arch.loader.exec_module(model_arch_module)
 sys.modules["model_arch"] = model_arch_module
 
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
+
+def get_domain(url):
+    return urlparse(url).netloc.lower()
+
 
 def fallback_extract(url):
     try:
@@ -85,25 +94,35 @@ def clean_text(text):
     import re
 
     text = text.lower()
-    text = re.sub(r'[^a-zA-Z0-9\s]', ' ', text)
+    text = re.sub(r'[^a-zA-Z0-9\s.,!?\'"-]', ' ', text)
     text = re.sub(r'\s+', ' ', text).strip()
-
-    # 🔥 TAKE FIRST FEW SENTENCES ONLY
-    sentences = text.split(".")
-    text = " ".join(sentences[:5])
 
     return text
 
-# ✅ 5. SEND TEXT TO MEMBER 2 MODEL
-def send_to_model(text, predictor):
-    try:
-        return predictor.predict(text)
-    except Exception as e:
-        return {"error": str(e)}
+def get_clean_chunk(text, limit=500):
+    if len(text) <= limit:
+        return text
 
+    # take first part
+    start = text[:limit]
+    if "." in start:
+        start = start[:start.rfind(".") + 1]
 
-# ✅ 6. FULL PIPELINE
+    # take last part
+    end = text[-limit:]
+    if "." in end:
+        end = end[end.find(".") + 1:]
+
+    return start + " " + end
+
+# ✅ 5. FULL PIPELINE
 def process_url(url, predictor):
+
+    domain = get_domain(url)
+
+    # basic trust signal
+    trusted_sources = ["bbc", "reuters", "thehindu", "ndtv", "cnn", "aljazeera"]
+
 
     if not check_url(url):
         return {"error": "Invalid URL"}
@@ -112,51 +131,72 @@ def process_url(url, predictor):
     if not url:
         return {"error": "URL not reachable"}
 
-    # 🔥 Step 1: Try main extraction
+    # Step 1: Extract
     text = get_article_text(url)
 
-    if text:
-        print("\n===== EXTRACTED TEXT =====\n")
-        print(text[:1000])
-    else:
-        print("\n❌ Primary extraction failed\n")
-
-    # 🔥 Step 2: Fallback if needed
     if not text:
         print("⚠ Using fallback extraction...")
         text = fallback_extract(url)
 
-    # 🔥 Step 3: Check again
     if not text:
         return {"error": "Failed to extract article"}
 
     if len(text) < 50:
         return {"error": "Content too short"}
 
-    # 🔥 Step 4: Clean text
+    # Step 2: Clean
     text = clean_text(text)
-    text = text[:500]
+
+    # 🔥 IMPORTANT: start + end
+    text = get_clean_chunk(text)
+    
 
     print("\n===== CLEANED TEXT =====\n")
-    print(text)
+    print(text[:500])
     print("\n========================\n")
 
-    # 🔥 Step 5: Model prediction
-    result = send_to_model(text, predictor)
+    # Step 3: Prediction
+    result = predictor.predict_long_text(text)
+
+# 🔥 Domain-based boost
+    if any(src in domain for src in TRUSTED_SOURCES):
+        result["real_prob"] = min(result["real_prob"] + 0.05, 1.0)
+        result["fake_prob"] = 1 - result["real_prob"]
+
+    # 🔥 Bias correction (language-based)
+    if any(word in text for word in BIAS_WORDS):
+        result["real_prob"] = min(result["real_prob"] + 0.05, 1.0)
+        result["fake_prob"] = 1 - result["real_prob"]
+
+# 🔥 FINAL DECISION
+    result["label"] = "REAL" if result["real_prob"] > result["fake_prob"] else "FAKE"
+    result["confidence"] = round(max(result["real_prob"], result["fake_prob"]), 4)
+
+    if result["confidence"] < predictor.threshold:
+        result["verdict"] = "UNCERTAIN"
+    else:
+        result["verdict"] = result["label"]
+
+    # 🔥 Extra safety
+    if result["confidence"] < 0.60:
+        result["verdict"] = "UNCERTAIN"
+
+    # 🔥 Explanation
+    if result["verdict"] == "FAKE":
+        result["reason"] = "Content shows patterns similar to misinformation."
+    elif result["verdict"] == "REAL":
+        result["reason"] = "Content matches patterns of verified news reporting."
+    else:
+        result["reason"] = "Model is uncertain due to mixed signals."
+
     print("MODEL RESULT:", result)
 
-# 🔥 ADD THIS BLOCK HERE
-    if "error" in result:
-        return {
-            "prediction": "UNCERTAIN",
-            "confidence": 0.0
-        }
-    return result 
-
+    return result
 
 # ✅ 7. RUN
 if __name__ == "__main__":
     url = input("Enter URL: ")
     output = process_url(url)
+    
     print("\nRESULT:")
     print(output)

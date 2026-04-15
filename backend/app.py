@@ -10,19 +10,31 @@ from NLP.prediction import FakeNewsPredictor
 from Recog.ocr import extract_text
 from NLP.member3_url_processor import process_url
 
-# ✅ Create app ONCE
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
+
+# ✅ Load model ONCE
+predictor = FakeNewsPredictor()
+
+UPLOAD_FOLDER = 'uploads'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+# -------------------------
+# ROUTES
+# -------------------------
+
+@app.route('/')
+def home():
+    return "Fake News Detection API Running 🚀"
 
 
+# 🔥 URL API
 @app.route('/predict_url', methods=['POST'])
 def predict_url():
-
     data = request.json
     url = data.get('url', '')
 
     result = process_url(url, predictor)
-    text = process_url(url, predictor)
 
     if "error" in result:
         return jsonify(result)
@@ -35,18 +47,6 @@ def predict_url():
     })
 
 
-# ✅ Load model
-predictor = FakeNewsPredictor()
-
-UPLOAD_FOLDER = 'uploads'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
-
-@app.route('/')
-def home():
-    return "Fake News Detection API Running 🚀"
-
-
 # 🔥 IMAGE API
 @app.route('/predict_image', methods=['POST'])
 def predict_image():
@@ -55,14 +55,21 @@ def predict_image():
         return jsonify({'error': 'No image uploaded'})
 
     file = request.files['image']
-
     filepath = os.path.join(UPLOAD_FOLDER, file.filename)
     file.save(filepath)
 
     text = extract_text(filepath)
 
-    result = predictor.predict(text)
+    # 🔥 If no text detected
+    if not text.strip():
+        return jsonify({
+            "error": "No text detected in image"
+        })
+
+    result = predictor.predict_long_text(text)
+
     print("MODEL OUTPUT:", result)
+
     return jsonify({
         "prediction": result["verdict"],
         "extracted_text": text,
@@ -70,20 +77,25 @@ def predict_image():
     })
 
 
-# 🔥 TEXT API (FIXED)
+# 🔥 TEXT API
 @app.route('/predict_text', methods=['POST'])
 def predict_text():
-
     data = request.json
     text = data.get('text', '')
 
-    result = predictor.predict(text)
+    result = predictor.predict_long_text(text)
+
     print("MODEL OUTPUT:", result)
+
     return jsonify({
         "prediction": result["verdict"],
         "confidence": float(result["confidence"])
     })
 
+
+# -------------------------
+# RUN SERVER
+# -------------------------
 
 if __name__ == '__main__':
     app.run(debug=True)
